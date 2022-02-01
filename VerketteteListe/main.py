@@ -29,7 +29,7 @@ class LinkedList:
         while temp_node:
             print(temp_node.data, end=',')
             temp_node = temp_node.next
-        print('Null')
+        print()
 
     def length(self):
         temp_node = self.head
@@ -56,4 +56,4 @@ if __name__ == '__main__':
         linked_list.insert(Node(randint(1, 100)))
 
     linked_list.display()
-    print(linked_list.length())
+    print("Length: "+str(linked_list.length()))
