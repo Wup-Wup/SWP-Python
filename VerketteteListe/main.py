@@ -224,24 +224,22 @@ class ArrayList:
         return len(self.list)
 
     def sortAsc(self):
-        for i in self.list:
-            j = self.list.index(i)
-            while j > 0:
-                if self.list[j - 1] > self.list[j]:
-                    self.list[j - 1], self.list[j] = self.list[j], self.list[j - 1]
-                else:
-                    break
+        for i in range(1, self.returnLength()):
+            key = self.list[i]
+            j = i - 1
+            while j >= 0 and key < self.list[j]:
+                self.list[j + 1] = self.list[j]
                 j -= 1
+            self.list[j+1] = key
 
     def sortDesc(self):
-        for i in self.list:
-            j = self.list.index(i)
-            while j > 0:
-                if self.list[j - 1] < self.list[j]:
-                    self.list[j - 1], self.list[j] = self.list[j], self.list[j - 1]
-                else:
-                    break
+        for i in range(1, self.returnLength()):
+            key = self.list[i]
+            j = i - 1
+            while j >= 0 and key > self.list[j]:
+                self.list[j + 1] = self.list[j]
                 j -= 1
+            self.list[j + 1] = key
 
 
 if __name__ == '__main__':
