@@ -1,3 +1,6 @@
+import random
+import time
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -220,11 +223,11 @@ class ArrayList:
         for i in reversed(self.list):
             print(i)
 
-    def returnLength(self):
+    def length(self):
         return len(self.list)
 
-    def sortAsc(self):
-        for i in range(1, self.returnLength()):
+    def sortASC(self):
+        for i in range(1, self.length()):
             key = self.list[i]
             j = i - 1
             while j >= 0 and key < self.list[j]:
@@ -232,8 +235,8 @@ class ArrayList:
                 j -= 1
             self.list[j+1] = key
 
-    def sortDesc(self):
-        for i in range(1, self.returnLength()):
+    def sortDESC(self):
+        for i in range(1, self.length()):
             key = self.list[i]
             j = i - 1
             while j >= 0 and key > self.list[j]:
@@ -245,17 +248,21 @@ class ArrayList:
 if __name__ == '__main__':
 
     linked_list = LinkedList()
-    linked_list.insert(Node(2))
-    linked_list.insert(Node(8))
-    linked_list.insert(Node(5))
-    linked_list.display()
-    print("")
-
     array_list = ArrayList()
-    array_list.insert(2)
-    array_list.insert(8)
-    array_list.insert(5)
-    array_list.display()
 
+    for i in range(10000):
+        x = random.randint(0, 1000)
+        linked_list.insert(Node(x))
+        array_list.insert(x)
 
+    start = time.time()
+    linked_list.sortASC()
+    print("Das Sortieren der Linkedlist dauerte: ")
+    print('{:5.3f}s'.format(time.time() - start))
+    print()
 
+    start = time.time()
+    array_list.sortASC()
+    print("Das Sortieren der Arraylist dauerte: ")
+    print('{:5.3f}s'.format(time.time() - start))
+    print()
